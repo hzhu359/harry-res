@@ -26,6 +26,26 @@
 
 
 \documentclass[10pt, letterpaper]{awesome-cv} % A4 paper size by default, use 'letterpaper' for US letter
+\usepackage{blindtext}
+
+% declare new dimensions
+\newdimen\origiwspc
+\newdimen\origiwstr
+
+\newenvironment{fontspace}[2]
+    {\par
+        % set default value of new dimensions
+        \origiwspc=\fontdimen2\font% original inter word space
+        \origiwstr=\fontdimen3\font% original inter word stretch
+        % set dimensions to arguments given
+        \fontdimen2\font=#1\origiwspc
+        \fontdimen3\font=#2\origiwstr
+    }
+    {\par
+        % reset original dimensions
+        \fontdimen2\font=\origiwspc
+        \fontdimen3\font=\origiwstr
+    }
 
 \geometry{left=2cm, top=1.5cm, right=2cm, bottom=1.5cm, footskip=.5cm} % Configure page margins with geometry
 
@@ -74,6 +94,9 @@
 \begin{document}
 \makecvheader % Print the header
 
+\begin{fontspace}{1.5}{2}
+    
+
 %----------------------------------------------------------------------------------------
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
@@ -90,6 +113,7 @@
 %\input{cv-sections/extracurricular.tex}
 
 
+\end{fontspace}
 
 %\input{cv-sections/committees.tex}
 
