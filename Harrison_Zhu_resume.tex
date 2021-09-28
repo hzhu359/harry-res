@@ -38,7 +38,7 @@
 
 % Color for highlights
 % \colorlet{awesome}{awesome-darknight} % Default colors include: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange, awesome-nephritis, awesome-concrete, awesome-darknight
-\definecolor{awesome}{HTML}{4b2c70} % Uncomment if you would like to specify your own color
+\definecolor{awesome}{HTML}{8739db} % Uncomment if you would like to specify your own color
 
 % Colors for text - uncomment and modify
 %\definecolor{darktext}{HTML}{414141}
@@ -75,8 +75,24 @@
 
 %----------------------------------------------------------------------------------------
 
+\newenvironment{fontspace}[2]
+    {\par
+        % set default value of new dimensions
+        \origiwspc=\fontdimen2\font% original inter word space
+        \origiwstr=\fontdimen3\font% original inter word stretch
+        % set dimensions to arguments given
+        \fontdimen2\font=#1\origiwspc
+        \fontdimen3\font=#2\origiwstr
+    }
+    {\par
+        % reset original dimensions
+        \fontdimen2\font=\origiwspc
+        \fontdimen3\font=\origiwstr
+    }
 
 \begin{document}
+\begin{fontspace}{1.5}{2}
+    
 \makecvheader % Print the header
 
 %----------------------------------------------------------------------------------------
@@ -101,5 +117,5 @@
 % \input{cover_letter.tex}
 
 %----------------------------------------------------------------------------------------
-
+\end{fontspace}
 \end{document}
